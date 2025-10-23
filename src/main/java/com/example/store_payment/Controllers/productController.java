@@ -30,8 +30,11 @@ public class productController {
         return productRepository.findById(barCode).orElse(null);
     }
 
-    
 
+
+
+
+    
     @PutMapping("/update/products/{barCode}")
     public Products updateProduct(@PathVariable String barCode, @RequestBody Products product) {
         if (productRepository.existsById(barCode)) {
