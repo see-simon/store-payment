@@ -30,8 +30,6 @@ public class productController {
         return productRepository.findAll();
     }
 
-
-
     @GetMapping("/get/products/{barCode}")
     public Products getProduct(@PathVariable String barCode) {
         return productRepository.findById(barCode).orElse(null);
