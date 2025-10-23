@@ -18,6 +18,10 @@ public class ProductService {
         productRepository.deleteById(barCode);
     }
 
+    public Products getAllProducts() {
+        return (Products) productRepository.findAll();
+    }
+
     public Products findById(String barCode) {
         return productRepository.findById(barCode).orElse(null);
     }
