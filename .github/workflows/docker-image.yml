@@ -1,16 +1,16 @@
 name: Docker Image CI
-
 on:
-  [push, pull_request]
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
 jobs:
-  publish:
+  docker-build:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
       - uses: actions/checkout@v4
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag store-payment:latest
-      - name: push to Docker Hub
-        run:
-        
+      - name: Build Docker image
+        run: docker build . -f Dockerfile -t my-image:${{ github.sha }}
+
 
