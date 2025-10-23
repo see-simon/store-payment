@@ -24,7 +24,7 @@ public class productController {
         productRepository.deleteById(barCode);
     }
 
-    // get all products
+
     @GetMapping("/get/products")
     public Iterable<Products> getAllProducts() {
         return productRepository.findAll();
