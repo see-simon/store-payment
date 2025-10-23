@@ -1,15 +1,24 @@
-# Start from a lightweight OpenJDK 17 image
-FROM openjdk:17-jdk-slim
-
-# Set the working directory inside the container
+# Stage 1: Build the app using Maven
+FROM maven:3.9.3-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Copy the built JAR file into the container
-# Make sure the JAR name matches your build (check target/ folder after mvn package)
-COPY target/store-payment-0.0.1-SNAPSHOT.jar app.jar
+# Copy pom.xml and source code
+COPY pom.xml .
+COPY src ./src
 
-# Expose the port your Spring Boot app runs on
+# Build the JAR (skip tests to speed up)
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run the app
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+
+# Copy the built JAR from the previous stage
+COPY --from=build /app/target/store-payment-0.0.1-SNAPSHOT.jar app.jar
+
+# Expose Spring Boot default port
 EXPOSE 8080
 
-# Run the JAR file
+# Run the JAR
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
