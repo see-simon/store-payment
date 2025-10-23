@@ -1,10 +1,13 @@
 package com.example.store_payment.Controllers;
 
 import com.example.store_payment.Repository.ProductRepository;
-import jakarta.persistence.PostUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.store_payment.Entities.Products;
+
+
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
 public class productController {
