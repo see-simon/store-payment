@@ -1,9 +1,10 @@
+
 # ===============================
 # Database Configuration
 # ===============================
-spring.datasource.url=postgresql://payment_store_db_user:mwCdrOl5yIzQ3VTGKJAcGV4E7qynfDXc@dpg-d3sqt763jp1c73a0b0b0-a/payment_store_db
-spring.datasource.username=payment_store_db_user
-spring.datasource.password=mwCdrOl5yIzQ3VTGKJAcGV4E7qynfDXc
+spring.datasource.url=jdbc:postgresql://localhost:5433/postgres
+spring.datasource.username=postgres
+spring.datasource.password=072020Sea@1
 spring.datasource.driver-class-name=org.postgresql.Driver
 
 # ===============================
@@ -16,13 +17,16 @@ spring.jpa.show-sql=true
 # ===============================
 # JWT Configuration
 # ===============================
+# Secret key for signing JWTs
 jwt.secret=mySuperSecretJWTKey1234567890
+
+# JWT token expiration in milliseconds (e.g. 1 hour)
 jwt.expiration=3600000
 
 # ===============================
 # Server Configuration
 # ===============================
-server.port=5432
+server.port=8080
 
 # ===============================
 # Logging
