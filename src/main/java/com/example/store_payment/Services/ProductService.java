@@ -4,15 +4,15 @@ import com.example.store_payment.Repository.ProductRepository;
 
 public class ProductService {
 
-  private  final ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
-  public ProductService(ProductRepository productRepository) {
-    this.productRepository = productRepository;
-  }
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
-  public Products save (Products product){
-    return productRepository.save(product);
-  }
+    public Products save(Products product) {
+        return productRepository.save(product);
+    }
 
     public void deleteById(String barCode) {
         productRepository.deleteById(barCode);
