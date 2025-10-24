@@ -25,6 +25,7 @@ public class ProductService {
     public Products findById(String barCode) {
         return productRepository.findById(barCode).orElse(null);
     }
+    
 
     public Products update(String barCode, Products product) {
         if (productRepository.existsById(barCode)) {
