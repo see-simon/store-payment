@@ -14,7 +14,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public void deleteById(String barCode) {
+    public void deleteById(Long barCode) {
         productRepository.deleteById(barCode);
     }
 
@@ -22,12 +22,12 @@ public class ProductService {
         return (Products) productRepository.findAll();
     }
 
-    public Products findById(String barCode) {
+    public Products findById(Long barCode) {
         return productRepository.findById(barCode).orElse(null);
     }
-    
 
-    public Products update(String barCode, Products product) {
+
+    public Products update(Long barCode, Products product) {
         if (productRepository.existsById(barCode)) {
             product.setBarCode(barCode);
             return productRepository.save(product);
@@ -36,7 +36,7 @@ public class ProductService {
         }
     }
 
-    public boolean existsById(String barCode) {
+    public boolean existsById(Long barCode) {
         return productRepository.existsById(barCode);
     }
 
