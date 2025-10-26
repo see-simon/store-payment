@@ -47,13 +47,22 @@ jobs:
           name: app-artifact
           path: dist
 
+      - name: Verify artifact
+        run: |
+          echo "Listing dist contents..."
+          ls -lh dist
+          JAR_FILE=$(ls dist/*.jar | head -n 1)
+          echo "Found JAR: $JAR_FILE"
+          echo "JAR_FILE=$JAR_FILE" >> $GITHUB_ENV
+
       - name: Deploy to Elastic Beanstalk
-        uses: einaregilsson/beanstalk-deploy@v17
+        uses: einaregilsson/beanstalk-deploy@v21
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: ${{ env.AWS_REGION }}
           application_name: "Springboot-store-payment-app"
           environment_name: "Springboot-store-payment-app-env"
           version_label: ${{ github.sha }}
-          deploy_package: "target/store-payment-0.0.1-SNAPSHOT.jar"
-          region: ${{ env.AWS_REGION }}
+          deployment_package: ${{ env.JAR_FILE }}
+          wait_for_deployment: true
