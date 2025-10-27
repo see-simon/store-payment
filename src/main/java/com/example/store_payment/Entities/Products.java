@@ -6,12 +6,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "products")
+@Table
+
 public class Products {
+
   @Id
-  @Column(name = "bar_code", nullable = false, length = 30)
-  private String barCode;
-  @Column(name = "product_name", nullable = false, length = 30)
+  @Column (name = "bar_code" , nullable = false, length = 30)
+  private  String barCode;
+
+  @Column (name = "product_name" , nullable = false, length = 30)
   private String productName;
 
   public String getBarCode() {
