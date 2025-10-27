@@ -32,7 +32,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         String path = request.getServletPath();
 
-        if (path.equals("/api/adding/products") || path.startsWith("/api/get/products")) {
+        if (path.equals("/api/**")) {
             filterChain.doFilter(request, response);
             return;
         }
