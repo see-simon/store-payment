@@ -32,7 +32,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         String path = request.getServletPath();
 
-        if (path.equals("/api/**")) {
+        
+        if (path.equals("/api/adding/products") || path.startsWith("/api/get/products")) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -57,6 +58,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             }
         }
 
-        filterChain.doFilter(request, response);
+        filterChain.doFilter(request, response); 
     }
 }
