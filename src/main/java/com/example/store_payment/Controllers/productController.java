@@ -7,7 +7,7 @@ import com.example.store_payment.Entities.Products;
 
 
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
 public class productController {
