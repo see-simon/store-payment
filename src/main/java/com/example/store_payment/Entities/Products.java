@@ -6,29 +6,27 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "products")
 public class Products {
+  @Id
+  @Column(name = "bar_code", nullable = false, length = 30)
+  private String barCode;
+  @Column(name = "product_name", nullable = false, length = 30)
+  private String productName;
 
-    @Id
-    @Column(name = "bar_code", nullable = false)
-    private Long barCode;
+  public String getBarCode() {
+    return barCode;
+  }
 
-    @Column(name = "product_name", nullable = false, length = 30)
-    private String productName;
+  public void setBarCode(String barCode) {
+    this.barCode = barCode;
+  }
 
-    public Long getBarCode() {
-        return barCode;
-    }
+  public String getProductName() {
+    return productName;
+  }
 
-    public void setBarCode(Long barCode) {
-        this.barCode = barCode;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
+  public void setProductName(String productName) {
+    this.productName = productName;
+  }
 }

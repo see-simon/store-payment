@@ -20,7 +20,7 @@ public class productController {
         return productRepository.save(product);
     }
     @DeleteMapping("/delete/products/{barCode}")
-    public void deleteProduct(@PathVariable Long barCode) {
+    public void deleteProduct(@PathVariable String barCode) {
         productRepository.deleteById(barCode);
     }
 
@@ -31,12 +31,12 @@ public class productController {
     }
 
     @GetMapping("/get/products/{barCode}")
-    public Products getProduct(@PathVariable Long barCode) {
+    public Products getProduct(@PathVariable String barCode) {
         return productRepository.findById(barCode).orElse(null);
     }
 
     @PutMapping("/update/products/{barCode}")
-    public Products updateProduct(@PathVariable Long barCode, @RequestBody Products product) {
+    public Products updateProduct(@PathVariable String barCode, @RequestBody Products product) {
         if (productRepository.existsById(barCode)) {
             product.setBarCode(barCode);
             return productRepository.save(product);
