@@ -53,11 +53,13 @@ public class SecurityConfig {
         config.setAllowCredentials(true);
         config.setAllowedOrigins(List.of(
                 "https://product-ui-phi.vercel.app", 
-                "http://localhost:3000",
-                "http://springboot-jpa-app-env.eba-xddamqpi.eu-north-1.elasticbeanstalk.com"              
+                "http://localhost:3000"
+                // "http://springboot-jpa-app-env.eba-xddamqpi.eu-north-1.elasticbeanstalk.com"              
         ));
-        config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        // config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        // config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         config.setMaxAge(3600L); 
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
