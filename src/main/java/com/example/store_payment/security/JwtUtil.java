@@ -1,6 +1,5 @@
 package com.example.store_payment.security;
 
-
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,10 +10,10 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    @Value("${jwt.secret}")
+    @Value("${jwt.secret}") 
     private String secret;
 
-    @Value("${jwt.expiration}")
+    @Value("${jwt.expiration}") 
     private long expiration;
 
     private Key getSigningKey() {
