@@ -35,6 +35,7 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/**").permitAll()
+                .requestMatchers("/api/adding/products/**").permitAll()
                 .anyRequest().authenticated()
             )
             .exceptionHandling(ex -> ex
